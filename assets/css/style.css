@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(211, 211, 211);
+}
+
+main{
+    display: block;
+    margin: auto 10rem;
+}
+
+hr{
+    color: black;
+}
+
+section{
+    display: flex;
+    gap: 4rem;
+}
