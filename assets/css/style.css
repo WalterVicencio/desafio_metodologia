@@ -4,7 +4,16 @@ body{
 
 main{
     display: block;
-    margin: auto 10rem;
+    margin: auto 1rem;
+}
+h1,h2,h3,h4{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+}
+h4,h1{
+    margin-top: 1rem;
 }
 
 hr{
@@ -14,4 +23,114 @@ hr{
 section{
     display: flex;
     gap: 4rem;
+}
+
+input{
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 50%;
+}
+
+button{
+    background-color: rgba(26,119,66,255);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 50%;
+    transition: background 0.3s ease-in;
+}
+
+button:hover{
+    background-color: rgba(26,119,66,0.3);
+}
+
+
+
+
+button:active{
+    border: 1px red solid;
+}
+
+.agregar{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.conteo{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cruz{
+    color: red;
+    transform: scale(4);
+    cursor: pointer;
+}
+
+table,th,tr,td{
+    margin-top: 1rem;
+    text-align: left;
+    padding-left: 0rem;
+}
+
+.check{
+    transform: scale(2);
+}
+
+.administracion{
+    display: block;
+}
+
+
+@media(min-width: 578px){
+    table,th,tr,td{
+        margin-top: 0rem;
+        text-align: left;
+        padding-left: 1rem;
+    }
+    .administracion{
+        display: flex;
+        justify-content: space-between;
+    }
+    body{
+        background-color: rgb(211, 211, 211);
+    }
+    
+    main{
+        display: block;
+        margin: auto 25%;
+    }
+    
+    hr{
+        color: black;
+    }
+    
+    .agregar{
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    section{
+        display: flex;
+        gap: 4rem;
+    }
+    button{
+        width: 30%;
+    }
+    input{
+        width: 70%;
+    }
 }
