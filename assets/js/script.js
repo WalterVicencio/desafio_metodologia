@@ -6,17 +6,17 @@ var total_realizadas=0
 const tareas = [
     {
         id: 1,
-        descripcion: "1111111111111",
+        descripcion: "Hacer la maleta",
         completado: false,  
     },
     {
         id: 2,
-        descripcion: "11111111111",
+        descripcion: "Reservar el hotel",
         completado: false,      
     },
     {
         id: 3,
-        descripcion: "11111111111",
+        descripcion: "Reservar el Tour guiado",
         completado: false,      
     }
 ]
@@ -41,33 +41,53 @@ function Eliminar(id){
     tareas.splice(index, 1)
     filas_tareas.innerHTML=''
     let completados=0
+
+
+    
     for (tarea of tareas){
-        filas_tareas.innerHTML+=`
+
+        html=''
+        html+=`
             <tr>
                 <td>${tarea.id}</td>
-                <td>${tarea.descripcion}</td>
-                <td><input id="check2${tarea.id}" class="check" type="checkbox"></td>
-                <td><i id="${tarea.id}" class="fa-sharp fa-solid fa-xmark fa-flip-horizontal fa-xl cruz" onclick="Eliminar(${tarea.id});"></i></td>
+                <td>${tarea.descripcion}</td>` 
+        
+        if(tarea.completado==true){
+            html+=`
+                    <td><input id="check${tarea.id}" checked="checked" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
+                    `
+        }else{
+            html+=`
+                    <td><input id="check${tarea.id}" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
+                    `
+        }
+        html+=`<td><i id="${tarea.id}" class="fa-sharp fa-solid fa-xmark fa-flip-horizontal fa-xl cruz" onclick="Eliminar(${tarea.id});"></i></td>
             </tr>
-            
-            `   
+            ` 
+        filas_tareas.innerHTML+=html  
+
+       
         if (tarea.completado==true){
             completados+=1
         }
         
-        total_realizadas=completados
-        res_realizadas.innerHTML=`${total_realizadas}`
+        
     }
-    
+    total_realizadas=completados
+    res_realizadas.innerHTML=`${total_realizadas}`
     
         
 }
 
 function Check(id){
-    console.log(input.id.checked)
+    console.log(id)
     const index = tareas.findIndex((ele) => ele.id == id)
-    tareas[index].completado=!(tareas[index].completado.value)
-    console.log(tareas)
+
+    if(tareas[index].completado==true){
+        tareas[index].completado=false
+    }else{
+        tareas[index].completado=true
+    }
 
     let completados=0
     for (tarea of tareas){
@@ -80,6 +100,10 @@ function Check(id){
 }
 
 function Agregar(){
+    if(input.value==''){
+        alert("Escriba una nueva tarea")
+    }else{
+    
     id_g=id_g+1
     total_tareas+=1
     res_total.innerHTML=`${total_tareas}`
@@ -87,20 +111,35 @@ function Agregar(){
         {
             id:id_g,
             descripcion: input.value,
-            completado: true,      
+            completado: false,      
         }
     )
+
     filas_tareas.innerHTML=''
     for (tarea of tareas){
-        filas_tareas.innerHTML+=`
+        html=''
+        html+=`
             <tr>
                 <td>${tarea.id}</td>
-                <td>${tarea.descripcion}</td>
-                <td><input id="check2${tarea.id}" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
-                <td><i id="${tarea.id}" class="fa-sharp fa-solid fa-xmark fa-flip-horizontal fa-xl cruz" onclick="Eliminar(${tarea.id});"></i></td>
+                <td>${tarea.descripcion}</td>` 
+        
+        if(tarea.completado==true){
+            html+=`
+                    <td><input id="check${tarea.id}" checked="checked" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
+                    `
+        }else{
+            html+=`
+                    <td><input id="check${tarea.id}" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
+                    `
+        }
+        html+=`<td><i id="${tarea.id}" class="fa-sharp fa-solid fa-xmark fa-flip-horizontal fa-xl cruz" onclick="Eliminar(${tarea.id});"></i></td>
             </tr>
-            
-            `   
+            ` 
+        filas_tareas.innerHTML+=html  
+        
+    }
+ 
+    input.value=''
     }
 }
 
@@ -109,7 +148,7 @@ for (tarea of tareas){
         <tr>
             <td>${tarea.id}</td>
             <td>${tarea.descripcion}</td>
-            <td><input id="check2${tarea.id}" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
+            <td><input id="check${tarea.id}" class="check" type="checkbox" onclick="Check(${tarea.id});"></td>
             <td><i id="${tarea.id}" class="fa-sharp fa-solid fa-xmark fa-flip-horizontal fa-xl cruz" onclick="Eliminar(${tarea.id});"></i></td>
         </tr>
         
